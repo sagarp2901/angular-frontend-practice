@@ -1,0 +1,100 @@
+<!-- 7. Makes use of at least two different structural directives to form the DOM -->
+<ng-container *ngIf="product">
+    <section class="hdca-product-listing">
+        <div class="hdca-product-grid">
+            <div class="hdca-product-box-container" itemscope="" itemtype="http://schema.org/Product">
+                <article class="hdca-product-box">
+                    <section class="hdca-product-box__header">
+                        <div class="hdca-product-box__header-compare">
+                            <div class="hdca-form-field">
+                                <div class="hdca-form-field__container">
+                                    <label class="hdca-form-field__wrap-label" for="default-117">
+                                        <div class="hdca-checkbox">
+                                            <input type="checkbox" id="default-117" name="default-117" class="hdca-checkbox__checkbox" />
+                                            <span class="hdca-checkbox__faux-checkbox"></span>
+                                        </div>
+                                        <span class="hdca-form-field__label-text">Compare</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="hdca-product-box__header-intro">
+                            <div class="hdca-product-box__header-intro-img-box">
+                                <img class="hdca-product-box__header-intro-img" src="/assets/images/products/product_1.jpg" alt="can not find image" itemprop="image" />
+                            </div>
+                            <div class="hdca-product-box__intro-badges">
+                                <!-- 7. Makes use of at least two different structural directives to form the DOM -->
+                                <svg class="hdca-product-box__badge-svg" aria-hidden="true" *ngFor="let badge of badges">
+                                    <use attr.xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#{{badge}}"></use>
+                                </svg>
+                                <!-- <svg class="hdca-product-box__badge-svg" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#badge-NLP"></use>
+                                </svg>
+                                <svg class="hdca-product-box__badge-svg" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#badge-SB"></use>
+                                </svg>
+                                <svg class="hdca-product-box__badge-svg" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#badge-ES"></use>
+                                </svg> -->
+                            </div>
+                        </a>
+                    </section>
+                    <section class="hdca-product-box__main">
+                        <div class="hdca-product-box__main-info">
+                            <link itemprop="url" href="#" />
+                            <a href="#" class="hdca-product-box__main-info-label hdca-product-box__main-info-label--link">
+                                <span class="hdca-product-box__main-info-label-entry hdca-product-box__main-info-label-entry--brand" itemprop="manufacturer">{{product.brand}}</span>
+                                <!-- 9. Makes use of string interpolation to display the data -->
+                                <span class="hdca-product-box__main-info-label-entry" itemprop="name">{{product.title}}</span>
+                            </a>
+                            <a href="#" class="hdca-product-box__main-info-detail hdca-product-box__main-info-detail--link">
+                                <div class="hdca-product-box__main-info-detail-entry">Model #
+                                    <!-- 9. Makes use of string interpolation to display the data -->
+                                    <span itemprop="model">{{product.model}}</span>
+                                </div>
+                                <div class="hdca-product-box__main-info-detail-entry">SKU #
+                                    <!-- 9. Makes use of string interpolation to display the data -->
+                                    <span itemprop="sku">{{product.id}}</span>
+                                </div>
+                            </a>
+                            <div class="hdca-product-box__main-info-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                                <a href="#rating" class="hdca-product-box__main-info-rating-link">
+                                    <div class="hdca-product-box__main-info-rating-link-stars">
+                                        <span class="hdca-product-box__main-info-rating-link-stars-overlay" [style.width]="getRating(product.rating)"></span>
+                                    </div>
+                                    <meta itemprop="worstRating" content="1" />
+                                    <meta itemprop="ratingValue" content="3" />
+                                    <meta itemprop="bestRating" content="5" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="hdca-product-box__main-purchase">
+                            <div class="hdca-product-box__main-purchase-price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                <span itemprop="priceCurrency" content="CAD"></span>
+                                <link itemprop="itemCondition" href="http://schema.org/NewCondition" content="New" />
+                                <div class="hdca-product-box__main-purchase-price-entry">
+                                    <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">${{product.price2}}</span>
+                                    <span class="hdca-product-box__main-purchase-price-entry-content"> / sq. ft.</span>
+                                </div>
+                                <div class="hdca-product-box__main-purchase-price-entry">
+                    <span class="hdca-product-box__main-purchase-price-entry-content">$
+                    <span itemprop="price">{{product.price1 | number : '1.2-2'}}</span> / case</span>
+                                </div>
+                                <div class="hdca-product-box__main-purchase-price-entry hdca-product-box__main-purchase-price-entry--savings">
+                                    <time itemprop="priceValidUntil" datetime="2020-11-05"></time>
+                                    <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">Save {{product.save}}%</span>
+                                    <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--was"> Was ${{product.was}}</span>
+                                </div>
+                            </div>
+                            <div class="hdca-product-box__main-purchase-action hdca-product-box__main-purchase-action--tool-rental">
+                                <button id="button-1379" class="hdca-button2 hdca-button2--primary hdca-button2--is-narrow hdca-product-box__main-purchase-action-item">
+                                    <span class="hdca-button2__label">Add To Cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </section>
+</ng-container>
